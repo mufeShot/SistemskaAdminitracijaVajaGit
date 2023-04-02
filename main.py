@@ -2,6 +2,22 @@ import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 
+def my_roberts(slika):
+    #vaša implementacija
+    return slika_robov
+
+def my_prewitt(slika):
+    #vaša implementacija
+    return slika_robov
+
+def my_sobel(slika):
+    #vaša implementacija
+    return slika_robov
+
+def canny(slika, sp_prag, zg_prag):
+    #vaša implementacija
+    return slika_robov 
+
 def main():
     # read image
     img = cv2.imread('lenna.png')
