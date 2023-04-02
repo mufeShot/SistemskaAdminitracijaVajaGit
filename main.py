@@ -110,7 +110,17 @@ def main():
     # convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    cv2.imshow(img)
+    cv2.imshow('Originalna slika', img)
+    roberts_edges = my_roberts(gray)
+    cv2.imshow('Roberts1', roberts_edges)
+    slika2 = spremeni_kontrast(gray, -3, 2)
+    cv2.imshow('Roberts2', my_roberts(slika2))
+    slika3 = spremeni_kontrast(gray, 2, 10)
+    cv2.imshow('Roberts3', my_roberts(slika3))
+    slika4 = spremeni_kontrast(gray, 1, 40)
+    cv2.imshow('Roberts4', my_roberts(slika4))
+    slika5 = spremeni_kontrast(gray, 4, 75)
+    cv2.imshow('Roberts5', my_roberts(slika5))
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
