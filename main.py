@@ -100,6 +100,9 @@ def canny(slika, sp_prag, zg_prag):
 def canny_without_gauss(slika, sp_prag, zg_prag):
     return cv2.Canny(slika, sp_prag, zg_prag)
 
+def spremeni_kontrast(slika, alfa, beta):
+    return cv2.convertScaleAbs(slika, alpha=alfa, beta=beta)
+
 def main():
     # read image
     img = cv2.imread('lenna.png')
