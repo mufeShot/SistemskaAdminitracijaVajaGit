@@ -93,8 +93,9 @@ def my_sobel(gray):
     return magnitude.astype(np.uint8)
 
 def canny(slika, sp_prag, zg_prag):
-    #vaša implementacija
-    return slika_robov
+    blurred = cv2.GaussianBlur(slika, (5, 5), 0)
+
+    return cv2.Canny(blurred, sp_prag, zg_prag)
 
 def main():
     # read image
