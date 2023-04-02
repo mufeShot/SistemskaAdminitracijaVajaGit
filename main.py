@@ -71,9 +71,26 @@ def my_prewitt(image):
 
     return prewitt_edges
 
-def my_sobel(slika):
-    #vaša implementacija
-    return slika_robov
+def my_sobel(gray):
+
+    # define sobel kernels
+    sobel_x = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])
+    sobel_y = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]])
+
+    # pad image
+    #padded_image = np.pad(gray, pad_width=1, mode='constant', constant_values=0)
+
+    # apply sobel kernels using convolve function
+    edges_x = convolve(gray, sobel_x)
+    edges_y = convolve(gray, sobel_y)
+
+    # calculate magnitude of edges
+    magnitude = np.sqrt(edges_x ** 2 + edges_y ** 2)
+
+    # normalize magnitude to 0-255 range
+    magnitude *= 255.0 / np.max(magnitude)
+
+    return magnitude.astype(np.uint8)
 
 def canny(slika, sp_prag, zg_prag):
     #vaša implementacija
