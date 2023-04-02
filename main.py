@@ -52,9 +52,24 @@ def my_roberts(image):
 
     return gradient_mag
 
-def my_prewitt(slika):
-    #vaša implementacija
-    return slika_robov
+def my_prewitt(image):
+    # convert image to grayscale
+    # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)  # remove this line
+
+    # apply prewitt kernel to x and y directions
+    prewitt_kernel_x = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
+    prewitt_kernel_y = np.array([[-1, -1, -1], [0, 0, 0], [1, 1, 1]])
+    prewitt_x = convolve(image, prewitt_kernel_x)
+    prewitt_y = convolve(image, prewitt_kernel_y)
+
+    # combine x and y edges
+    prewitt_edges = np.sqrt(np.square(prewitt_x) + np.square(prewitt_y))
+    prewitt_edges = (prewitt_edges / prewitt_edges.max()) * 255
+
+    # convert edges to uint8
+    prewitt_edges = prewitt_edges.astype(np.uint8)
+
+    return prewitt_edges
 
 def my_sobel(slika):
     #vaša implementacija
