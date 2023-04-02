@@ -97,6 +97,9 @@ def canny(slika, sp_prag, zg_prag):
 
     return cv2.Canny(blurred, sp_prag, zg_prag)
 
+def canny_without_gauss(slika, sp_prag, zg_prag):
+    return cv2.Canny(slika, sp_prag, zg_prag)
+
 def main():
     # read image
     img = cv2.imread('lenna.png')
