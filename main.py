@@ -110,18 +110,18 @@ def main():
     # convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # testiranje my_sobel algoritma
+    # testiranje canny algoritma
+    canny1 = canny(gray, 100, 200)
+    canny2 = canny(gray, 50, 100)
+    canny3 = canny(gray, 150, 500)
+    canny4 = canny(gray, 75, 80)
+    canny5 = canny(gray, 20, 300)
     cv2.imshow('Originalna slika', img)
-    sobel_edges = my_sobel(gray)
-    cv2.imshow('Sobel1', sobel_edges)
-    slika2 = spremeni_kontrast(gray, 1.2, 2)
-    cv2.imshow('Sobel2', my_sobel(slika2))
-    slika3 = spremeni_kontrast(gray, 1.7, 12)
-    cv2.imshow('Sobel3', my_sobel(slika3))
-    slika4 = spremeni_kontrast(gray, 0.45, 35)
-    cv2.imshow('Sobel4', my_sobel(slika4))
-    slika5 = spremeni_kontrast(gray, 4, 75)
-    cv2.imshow('Sobel5', my_sobel(slika5))
+    cv2.imshow('Canny1', canny1)
+    cv2.imshow('Canny2', canny2)
+    cv2.imshow('Canny3', canny3)
+    cv2.imshow('Canny4', canny4)
+    cv2.imshow('Canny5', canny5)
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
