@@ -2,6 +2,34 @@ import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 
+def convolve(image, kernel):
+    # Get the dimensions of the kernel and the image
+    image_height, image_width = image.shape
+    kernel_height, kernel_width = kernel.shape
+
+    # Calculate the amount of padding needed
+    pad_height = (kernel_height - 1) // 2
+    pad_width = (kernel_width - 1) // 2
+
+    # Create a zero-padded image
+    padded_image = np.zeros((image_height + 2 * pad_height, image_width + 2 * pad_width))
+    padded_image[pad_height:-pad_height, pad_width:-pad_width] = image
+
+
+    # Create an output array to hold the convolved image
+    output = np.zeros((image_height, image_width))
+
+    # Loop over each pixel in the image
+    for i in range(pad_height, image_height + pad_height):
+        for j in range(pad_width, image_width + pad_width):
+            # Extract the patch from the padded image
+            patch = padded_image[i - pad_height:i + pad_height + 1, j - pad_width:j + pad_width + 1]
+
+            # Apply the kernel to the patch
+            output[i - pad_height, j - pad_width] = np.sum(patch * kernel)
+
+    return output
+
 def my_roberts(image):
     kernel_x = np.array([[0, 0, 0], [0, 1, 0], [0, 0, -1]])
     kernel_y = np.array([[0, 0, 0], [0, 0, 1], [0, -1, 0]])
