@@ -110,18 +110,18 @@ def main():
     # convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # testiranje my_prewitt
+    # testiranje my_sobel algoritma
     cv2.imshow('Originalna slika', img)
-    prewitt_edges = my_prewitt(gray)
-    cv2.imshow('Prewitt1', prewitt_edges)
+    sobel_edges = my_sobel(gray)
+    cv2.imshow('Sobel1', sobel_edges)
     slika2 = spremeni_kontrast(gray, 1.2, 2)
-    cv2.imshow('Prewitt2', my_prewitt(slika2))
+    cv2.imshow('Sobel2', my_sobel(slika2))
     slika3 = spremeni_kontrast(gray, 1.7, 12)
-    cv2.imshow('Prewitt3', my_prewitt(slika3))
+    cv2.imshow('Sobel3', my_sobel(slika3))
     slika4 = spremeni_kontrast(gray, 0.45, 35)
-    cv2.imshow('Prewitt4', my_prewitt(slika4))
+    cv2.imshow('Sobel4', my_sobel(slika4))
     slika5 = spremeni_kontrast(gray, 4, 75)
-    cv2.imshow('Prewitt5', my_prewitt(slika5))
+    cv2.imshow('Sobel5', my_sobel(slika5))
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
